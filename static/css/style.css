@@ -359,7 +359,7 @@ p {
 
 dt:not(:first-child),
 li:not(:first-child) {
-	margin-top: 1.25rem;
+	margin-top: 0.72rem;
 }
 
 blockquote {
@@ -889,7 +889,7 @@ p.bookshelf_book a img {
 /* ----- Micro.blog Conversation ----- */
 
 .microblog_conversation {
-	margin-top: 3em;
+	margin-top: 2em;
 	padding-top: 1.5em;
 	border-top: 1px solid #ddd;
 	width: 55%;
@@ -986,7 +986,7 @@ img.microblog_avatar {
 }
 
 section {
-	padding-top: 1.65rem;
+	padding-top: 1.64rem;
 }
 
 /* ============================================================
