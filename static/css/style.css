@@ -222,8 +222,8 @@ a:hover {
 article.pt-post {
 	position: relative;
 	padding-left: 16.5rem;
-	padding-bottom: 2rem;
-	margin-bottom: 1rem;
+	padding-bottom: 0.6rem;
+	padding-top: 1.6rem
 	min-height: 4rem;
 }
 
@@ -234,6 +234,7 @@ article.pt-post {
 	width: 15rem;
 	text-align: right;
 	padding-right: 1.5rem;
+	padding-top: 1.41rem;
 }
 
 .post-meta-left .post-title {
@@ -242,7 +243,7 @@ article.pt-post {
 	font-weight: 600;
 	font-style: italic;
 	line-height: 1.3;
-	margin: 0 0 0.4rem 0;
+	margin: 0 0 0.85rem 0;
 	color: #222;
 }
 
@@ -270,6 +271,7 @@ article.pt-post {
 	color: #667;
 	display: block;
 	line-height: 1.3;
+	margin-top: 0.59rem;
 }
 
 .post-permalink {
@@ -325,8 +327,8 @@ p,
 dl,
 ol,
 ul {
-	font-size: 1.05rem;
-	line-height: 1.65;
+	font-size: 1.12rem;
+	line-height: 1.52;
 }
 
 p {
@@ -344,19 +346,20 @@ p {
 .post-content > .email-reply,
 .post-content > .conversation-reply {
 	width: 55%;
+	font-size: 1.16rem;
 }
 
 .post-content section > dl,
 .post-content section > ol,
 .post-content section > ul {
-	width: 50%;
+	width: 55%;
 	-webkit-padding-start: 5%;
 	padding-inline-start: 5%;
 }
 
 dt:not(:first-child),
 li:not(:first-child) {
-	margin-top: 0.25rem;
+	margin-top: 1.25rem;
 }
 
 blockquote {
@@ -455,7 +458,7 @@ div.epigraph > blockquote > footer > cite {
 	width: 50%;
 	margin-top: 0.3rem;
 	margin-bottom: 0;
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 	line-height: 1.4;
 	vertical-align: baseline;
 	position: relative;
@@ -474,9 +477,9 @@ div.epigraph > blockquote > footer > cite {
 
 .sidenote-number:after {
 	content: counter(sidenote-counter);
-	font-size: 0.8rem;
-	top: -0.5rem;
-	left: -0.15rem;
+	font-size: 1rem;
+	top: -0.45rem;
+	left: -0.16rem;
 }
 
 .sidenote:before {
