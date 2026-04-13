@@ -24,11 +24,11 @@
 				<p>{{ partial "reply-by-email.html" . }}</p>
 			{{ end }}
 		</div>
-		<div class="conversation-reply">
+		{{/* <div class="conversation-reply">
 			{{ if templates.Exists "partials/conversation-link.html" }}
 				<p>{{ partial "conversation-link.html" . }}</p>
 			{{ end }}
-		</div>
+		</div> */}}
 		{{ if .Site.Params.include_conversation }}
 			<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
 		{{ end }}
