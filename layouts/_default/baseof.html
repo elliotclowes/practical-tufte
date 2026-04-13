@@ -2,11 +2,9 @@
 <html lang="en">
 	{{ partial "head.html" . }}
 	<body>
-		<div class="container">
-			{{ partial "header.html" . }}
-			{{ block "main" . }}{{ end }}
-			{{ partial "footer.html" . }}
-		</div>
+		{{ partial "header.html" . }}
+		{{ block "main" . }}{{ end }}
+		{{ partial "footer.html" . }}
 		{{ partial "custom_footer.html" . }}
 		{{ range .Site.Params.plugins_js }}
 			<script src="{{ . }}"></script>

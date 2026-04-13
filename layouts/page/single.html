@@ -1,8 +1,12 @@
 {{ define "main" }}
-<div class="content page">
-  <h1 class="page-title">{{ .Title }}</h1>
-	<section>
-		{{ .Content }}
-	</section>
-</div>
+<article class="pt-post">
+	<div class="post-meta-left">
+		<h1 class="post-title">{{ .Title }}</h1>
+	</div>
+	<div class="post-content">
+		<section class="e-content">
+			{{ .Content }}
+		</section>
+	</div>
+</article>
 {{ end }}

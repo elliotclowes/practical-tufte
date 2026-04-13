@@ -1,19 +1,11 @@
 {{ partial "head.html" . }}
 <body>
 	{{ partial "header.html" . }}
-	<section id="main" class="outer">
-		<section class="archives-wrap">
-			<div class="archive-category-wrap">
-				<span class="archive-category">Posts in: {{ .Title }}</span>
-			</div>
-			<div class="archives">
-				{{ range .Paginator.Pages }}
-					{{ partial "li.html" . }}
-				{{ end }}
-			</div>
-		</section>
-		{{ partial "pagination.html" . }}
-	</section>
+	<p class="archive-section-title">Posts in: {{ .Title }}</p>
+	{{ range .Paginator.Pages }}
+		{{ partial "li.html" . }}
+	{{ end }}
+	{{ partial "pagination.html" . }}
 	{{ partial "footer.html" . }}
 	{{ partial "custom_footer.html" . }}
 	{{ range .Site.Params.plugins_js }}

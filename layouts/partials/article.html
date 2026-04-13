@@ -1,46 +1,37 @@
-<article class="h-entry">
-	<div class="article-meta">
-		<span class="pubdate">Published on <time class="dt-published" datetime='{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}' itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time>
-		</span>
-		<span class="permalink"><a href="{{ .RelPermalink }}">  [Permalink]</a></span><br />
+<article class="h-entry pt-post">
+	<div class="post-meta-left">
 		{{ if .Title }}
-			{{ $readTime := .ReadingTime }}
-			<span class="read-time">Reading time: {{ .ReadingTime }} {{ cond (eq $readTime 1) "minute" "minutes"}}</span><br />
+			<h1 class="post-title p-name" itemprop="name">{{ .Title }}</h1>
 		{{ end }}
-		{{ $Site := .Site }}
+		<time class="dt-published post-date" datetime='{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}' itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time>
+		<a href="{{ .RelPermalink }}" class="post-permalink u-url">[permalink]</a>
+	</div>
+	<div class="post-content">
+		<section class="e-content">
+			{{ .Content }}
+		</section>
 		{{ if .Params.categories }}
-			<span class="catlist">Posted in: </span>
-			<span class="post-categories">
-				<span class="article-category">
-					{{ range $i, $e := .Params.categories }}
-						{{ if gt $i 0 }}
-							<span>•</span>
-						{{ end }}
-						<a class="article-category-link" href="{{ $Site.BaseURL }}/categories/{{ $e | urlize }}">{{ $e }}</a>
+			<div class="post-categories-footer">
+				<p class="categories-label">Read more on:</p>
+				<ul class="categories-list">
+					{{ range .Params.categories }}
+						<li><a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a></li>
 					{{ end }}
-				</span>
-			</span>
+				</ul>
+			</div>
 		{{ end }}
-		{{ if .Title }}
-			<header class="article-header">
-				<h1 class="article-title p-name" itemprop="name">{{ .Title }}</h1>
-			</header>
+		<div class="email-reply">
+			{{ if templates.Exists "partials/reply-by-email.html" }}
+				<p>{{ partial "reply-by-email.html" . }}</p>
+			{{ end }}
+		</div>
+		<div class="conversation-reply">
+			{{ if templates.Exists "partials/conversation-link.html" }}
+				<p>{{ partial "conversation-link.html" . }}</p>
+			{{ end }}
+		</div>
+		{{ if .Site.Params.include_conversation }}
+			<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
 		{{ end }}
 	</div>
-	<section class="e-content">
-		{{ .Content }}
-	</section>
-	<div class="email-reply">
-		{{ if templates.Exists "partials/reply-by-email.html" }}
-  			<p>{{ partial "reply-by-email.html" . }}</p>
-		{{ end }}
-	</div>
-	<div class="conversation-reply">
-	{{ if templates.Exists "partials/conversation-link.html" }}
-  		<p>{{ partial "conversation-link.html" . }}</p>
-	{{ end }}
-	</div>
-	{{ if .Site.Params.include_conversation }}
-		<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
-	{{ end }}
 </article>
