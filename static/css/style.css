@@ -1171,7 +1171,7 @@ section {
 	}
 
 	.post-meta-left .post-title {
-		font-size: 1.1rem;
+		font-size: 1.6rem;
 		margin-bottom: 0;
 	}
 
@@ -1280,6 +1280,15 @@ section {
 	/* Pagination */
 	nav#page-nav {
 		font-size: 0.9rem;
+	}
+	
+	section {
+	padding-top: 0.5rem;
+	}
+	
+	.post-date {
+		font-size: 0.98rem;
+		margin-top: 0.2rem;
 	}
 }
 
