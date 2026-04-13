@@ -4,7 +4,6 @@
 			<h1 class="post-title p-name" itemprop="name">{{ .Title }}</h1>
 		{{ end }}
 		<time class="dt-published post-date" datetime='{{ .Date.Format "2006-01-02T15:04:05.000-07:00" }}' itemprop="datePublished">{{ .Date.Format "Jan 2, 2006" }}</time>
-		<a href="{{ .RelPermalink }}" class="post-permalink u-url">[permalink]</a>
 	</div>
 	<div class="post-content">
 		<section class="e-content">
