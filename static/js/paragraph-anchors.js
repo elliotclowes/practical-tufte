@@ -52,7 +52,16 @@
 				a.className = 'para-anchor';
 				a.textContent = '\u00A0#';
 				a.setAttribute('aria-label', 'Link to this paragraph');
-				el.appendChild(a);
+				// For list items with nested lists, insert before the nested list
+				// so the # sits next to the parent text, not below the sub-items.
+				var nestedList = el.tagName === 'LI'
+					? el.querySelector(':scope > ul, :scope > ol')
+					: null;
+				if (nestedList) {
+					el.insertBefore(a, nestedList);
+				} else {
+					el.appendChild(a);
+				}
 			});
 		});
 

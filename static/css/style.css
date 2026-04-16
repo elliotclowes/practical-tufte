@@ -134,7 +134,7 @@ body {
 }
 
 .site-title {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 1.3rem;
 	font-weight: bold;
 	text-decoration: none;
@@ -154,7 +154,7 @@ body {
 }
 
 .nav-link {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 0.85rem;
 	text-decoration: none;
 	color: #555;
@@ -256,7 +256,7 @@ article.pt-post {
 }
 
 .post-meta-left .post-title {
-	font-family: Equity, Palatino, Georgia, serif;
+	font-family: Equity, Georgia, Palatino, serif;
 	font-size: 1.40rem;
 	font-weight: 600;
 	font-style: italic;
@@ -284,7 +284,7 @@ article.pt-post {
 }
 
 .post-date {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 0.86rem;
 	color: #667;
 	display: block;
@@ -313,7 +313,7 @@ article.pt-post {
 /* ----- Typography ----- */
 
 h1 {
-	font-family: Equity, Palatino, Georgia, serif;
+	font-family: Equity, Georgia, Palatino, serif;
 	font-weight: 400;
 	font-size: 2.2rem;
 	line-height: 1.15;
@@ -322,7 +322,7 @@ h1 {
 }
 
 h2 {
-	font-family: Equity, Palatino, Georgia, serif;
+	font-family: Equity, Georgia, Palatino, serif;
 	font-style: italic;
 	font-weight: 400;
 	font-size: 1.6rem;
@@ -332,7 +332,7 @@ h2 {
 }
 
 h3 {
-	font-family: Equity, Palatino, Georgia, serif;
+	font-family: Equity, Georgia, Palatino, serif;
 	font-style: italic;
 	font-weight: 400;
 	font-size: 1.3rem;
@@ -436,7 +436,7 @@ hr {
 /* ----- Newthought (small caps shortcode) ----- */
 
 span.newthought {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-variant: small-caps;
 	font-size: 1.1em;
 	letter-spacing: 0.02em;
@@ -488,7 +488,7 @@ div.epigraph > blockquote > footer > cite {
 
 .sidenote-number:after,
 .sidenote:before {
-	font-family: et-book-roman-old-style, Equity, Palatino, Georgia, serif;
+	font-family: et-book-roman-old-style, Equity, Georgia, Palatino, serif;
 	position: relative;
 	vertical-align: baseline;
 }
@@ -551,7 +551,7 @@ p:hover > a.para-anchor,
 h1:hover > a.para-anchor,
 h2:hover > a.para-anchor,
 h3:hover > a.para-anchor,
-li:hover > a.para-anchor {
+li:hover:not(:has(li:hover)) > a.para-anchor {
 	color: #ccc;
 }
 
@@ -771,7 +771,7 @@ span.p-summary {
 }
 
 .post-categories-footer .categories-label {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 0.85rem;
 	color: #667;
 	margin-bottom: 0;
@@ -821,7 +821,7 @@ span.p-summary {
 /* ----- Archive Pages ----- */
 
 .archive-section-title {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 1.1rem;
 	font-weight: 400;
 	margin-bottom: 1.5rem;
@@ -847,7 +847,7 @@ span.p-summary {
 /* Tags/Terms page */
 .layout-title span {
 	display: block;
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 1.1rem;
 	font-weight: 400;
 	padding-bottom: 1rem;
@@ -871,7 +871,7 @@ span.p-summary {
 }
 
 .content.page .page-title {
-	font-family: Equity, Palatino, Georgia, serif;
+	font-family: Equity, Georgia, Palatino, serif;
 	font-size: 2rem;
 	font-weight: 400;
 	margin-bottom: 1.5rem;
@@ -913,7 +913,7 @@ span.prev {
 }
 
 .footer-inner {
-	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
 	font-size: 0.8rem;
 	color: #999;
 	letter-spacing: 0.02em;
@@ -1138,7 +1138,7 @@ section {
 	h1:hover > a.para-anchor,
 	h2:hover > a.para-anchor,
 	h3:hover > a.para-anchor,
-	li:hover > a.para-anchor {
+	li:hover:not(:has(li:hover)) > a.para-anchor {
 		color: #555;
 	}
 
