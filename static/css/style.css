@@ -517,26 +517,28 @@ label.margin-toggle:not(.sidenote-number) {
 
 /* ----- Paragraph Anchors (Scripting.com-style # links) ----- */
 
-.para-anchor {
+a.para-anchor,
+a.para-anchor:link,
+a.para-anchor:visited {
 	font-size: 0.7em;
 	text-decoration: none !important;
 	color: transparent;
 	margin-left: 0.15em;
 	transition: color 0.2s ease;
 	vertical-align: baseline;
+	background: none !important;
 }
 
 /* Desktop: reveal on paragraph hover */
-p:hover > .para-anchor,
-h1:hover > .para-anchor,
-h2:hover > .para-anchor,
-h3:hover > .para-anchor {
+p:hover > a.para-anchor,
+h1:hover > a.para-anchor,
+h2:hover > a.para-anchor,
+h3:hover > a.para-anchor {
 	color: #ccc;
 }
 
-.para-anchor:hover {
+a.para-anchor:hover {
 	color: #933 !important;
-	background: none !important;
 }
 
 /* Brief highlight when arriving via a #hash link */
@@ -1111,14 +1113,14 @@ section {
 	}
 
 	/* Paragraph anchors in dark mode */
-	p:hover > .para-anchor,
-	h1:hover > .para-anchor,
-	h2:hover > .para-anchor,
-	h3:hover > .para-anchor {
+	p:hover > a.para-anchor,
+	h1:hover > a.para-anchor,
+	h2:hover > a.para-anchor,
+	h3:hover > a.para-anchor {
 		color: #555;
 	}
 
-	.para-anchor:hover {
+	a.para-anchor:hover {
 		color: #e8a0a0 !important;
 	}
 
@@ -1344,7 +1346,9 @@ section {
 	}
 
 	/* Paragraph anchors: always visible on mobile */
-	.para-anchor {
+	a.para-anchor,
+	a.para-anchor:link,
+	a.para-anchor:visited {
 		color: #ccc;
 	}
 }
@@ -1379,7 +1383,9 @@ section {
 		border-left-color: #555;
 	}
 
-	.para-anchor {
+	a.para-anchor,
+	a.para-anchor:link,
+	a.para-anchor:visited {
 		color: #444;
 	}
 }
