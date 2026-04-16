@@ -195,11 +195,12 @@ a:visited {
 	border-radius: 4px;
 }
 
-/* Don't add degree symbol to image links, figures, sidenote toggles, etc. */
+/* Don't add degree symbol to image links, figures, sidenote toggles, paragraph anchors, etc. */
 figure a::after,
 .e-content figure a::after,
 .e-content a:has(img)::after,
 .e-content a.no-marker::after,
+.e-content a.para-anchor::after,
 .e-content label:not(.sidenote-number)::after {
 	content: none;
 }
@@ -512,6 +513,40 @@ label.sidenote-number {
 
 label.margin-toggle:not(.sidenote-number) {
 	display: none;
+}
+
+/* ----- Paragraph Anchors (Scripting.com-style # links) ----- */
+
+.para-anchor {
+	font-size: 0.7em;
+	text-decoration: none !important;
+	color: transparent;
+	margin-left: 0.15em;
+	transition: color 0.2s ease;
+	vertical-align: baseline;
+}
+
+/* Desktop: reveal on paragraph hover */
+p:hover > .para-anchor,
+h1:hover > .para-anchor,
+h2:hover > .para-anchor,
+h3:hover > .para-anchor {
+	color: #ccc;
+}
+
+.para-anchor:hover {
+	color: #933 !important;
+	background: none !important;
+}
+
+/* Brief highlight when arriving via a #hash link */
+@keyframes anchor-highlight {
+	0% { background-color: rgba(147, 51, 51, 0.08); }
+	100% { background-color: transparent; }
+}
+
+:target {
+	animation: anchor-highlight 2s ease-out;
 }
 
 /* ----- Figures & Images ----- */
@@ -1075,6 +1110,23 @@ section {
 		background: rgba(232, 160, 160, 0.1);
 	}
 
+	/* Paragraph anchors in dark mode */
+	p:hover > .para-anchor,
+	h1:hover > .para-anchor,
+	h2:hover > .para-anchor,
+	h3:hover > .para-anchor {
+		color: #555;
+	}
+
+	.para-anchor:hover {
+		color: #e8a0a0 !important;
+	}
+
+	@keyframes anchor-highlight {
+		0% { background-color: rgba(232, 160, 160, 0.08); }
+		100% { background-color: transparent; }
+	}
+
 	.site-footer {
 		border-top-color: #333;
 	}
@@ -1281,14 +1333,19 @@ section {
 	nav#page-nav {
 		font-size: 0.9rem;
 	}
-	
+
 	section {
 	padding-top: 0.5rem;
 	}
-	
+
 	.post-date {
 		font-size: 0.98rem;
 		margin-top: 0.2rem;
+	}
+
+	/* Paragraph anchors: always visible on mobile */
+	.para-anchor {
+		color: #ccc;
 	}
 }
 
@@ -1320,5 +1377,9 @@ section {
 	.margin-toggle:checked + .marginnote {
 		background: #252540;
 		border-left-color: #555;
+	}
+
+	.para-anchor {
+		color: #444;
 	}
 }

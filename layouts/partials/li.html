@@ -1,4 +1,4 @@
-<article class="h-entry pt-post{{ if not .Title }} no-title{{ end }}">
+<article class="h-entry pt-post{{ if not .Title }} no-title{{ end }}" data-permalink="{{ .Permalink }}">
 	<div class="post-meta-left">
 		{{ if .Title }}
 			<a href="{{ .RelPermalink }}" class="u-url">
