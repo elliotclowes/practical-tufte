@@ -173,16 +173,20 @@ a:visited {
 	text-decoration: none;
 }
 
-/* Content links: PT-style degree indicator */
-.e-content a:link,
-.e-content a:visited,
-.post-categories-footer a:link,
-.post-categories-footer a:visited {
-	text-decoration: none;
+/* Content links: underline unvisited, degree symbol on visited */
+.e-content a:link {
 	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: #933;
+	text-underline-offset: 0.15em;
+	text-decoration-thickness: 1px;
 }
 
-.e-content a:link::after,
+.e-content a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
 .e-content a:visited::after {
 	content: "\FEFF\00B0";
 	margin-left: 0.08em;
@@ -190,9 +194,16 @@ a:visited {
 	color: #933;
 }
 
+.post-categories-footer a:link,
+.post-categories-footer a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
 .e-content a:hover {
 	background: #fbf3f3;
 	border-radius: 4px;
+	text-decoration: none;
 }
 
 /* Don't add degree symbol to image links, figures, sidenote toggles, paragraph anchors, etc. */
@@ -202,7 +213,13 @@ figure a::after,
 .e-content a.no-marker::after,
 .e-content a.para-anchor::after,
 .e-content label:not(.sidenote-number)::after {
-	content: none;
+	content: none !important;
+}
+
+/* Don't underline image/figure links */
+.e-content figure a:link,
+.e-content a:has(img):link {
+	text-decoration: none;
 }
 
 /* General link hover */
@@ -492,7 +509,7 @@ div.epigraph > blockquote > footer > cite {
 /* No degree symbol inside sidenotes/marginnotes */
 .sidenote a::after,
 .marginnote a::after {
-	content: none;
+	content: none !important;
 }
 
 blockquote .sidenote,
@@ -529,11 +546,12 @@ a.para-anchor:visited {
 	background: none !important;
 }
 
-/* Desktop: reveal on paragraph hover */
+/* Desktop: reveal on paragraph/list-item hover */
 p:hover > a.para-anchor,
 h1:hover > a.para-anchor,
 h2:hover > a.para-anchor,
-h3:hover > a.para-anchor {
+h3:hover > a.para-anchor,
+li:hover > a.para-anchor {
 	color: #ccc;
 }
 
@@ -543,12 +561,12 @@ a.para-anchor:hover {
 
 /* Brief highlight when arriving via a #hash link */
 @keyframes anchor-highlight {
-	0% { background-color: rgba(147, 51, 51, 0.08); }
+	0%, 40% { background-color: rgba(147, 51, 51, 0.12); }
 	100% { background-color: transparent; }
 }
 
 :target {
-	animation: anchor-highlight 2s ease-out;
+	animation: anchor-highlight 4s ease-out;
 }
 
 /* ----- Figures & Images ----- */
@@ -1074,7 +1092,10 @@ section {
 		border-top-color: #333;
 	}
 
-	.e-content a:link::after,
+	.e-content a:link {
+		text-decoration-color: #e8a0a0;
+	}
+
 	.e-content a:visited::after {
 		color: #e8a0a0;
 	}
@@ -1116,7 +1137,8 @@ section {
 	p:hover > a.para-anchor,
 	h1:hover > a.para-anchor,
 	h2:hover > a.para-anchor,
-	h3:hover > a.para-anchor {
+	h3:hover > a.para-anchor,
+	li:hover > a.para-anchor {
 		color: #555;
 	}
 
@@ -1125,7 +1147,7 @@ section {
 	}
 
 	@keyframes anchor-highlight {
-		0% { background-color: rgba(232, 160, 160, 0.08); }
+		0%, 40% { background-color: rgba(232, 160, 160, 0.12); }
 		100% { background-color: transparent; }
 	}
 

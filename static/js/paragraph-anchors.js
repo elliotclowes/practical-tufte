@@ -26,12 +26,15 @@
 			var seen = {};
 
 			var els = article.querySelectorAll(
-				'.e-content p, .e-content h1, .e-content h2, .e-content h3'
+				'.e-content p, .e-content h1, .e-content h2, .e-content h3, .e-content li'
 			);
 
 			els.forEach(function (el) {
 				// Skip elements inside sidenotes, margin notes, or non-content areas
 				if (el.closest('.sidenote, .marginnote, .post-categories-footer, .email-reply, .conversation-reply, .microblog_conversation')) return;
+
+				// For list items, skip if they contain <p> children (the <p> gets its own anchor)
+				if (el.tagName === 'LI' && el.querySelector('p')) return;
 
 				// Skip empty / image-only paragraphs
 				var text = el.textContent.trim();
