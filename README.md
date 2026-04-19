@@ -1,162 +1,155 @@
-# Tufte for Micro.blog
+# Practical Tufte
 
-**A clean and beautiful theme based on the design and typography styles of Edward Tufte.**  Based heavily on the [Tufte-CSS](https://edwardtufte.github.io/tufte-css/) project by Dave Liepmann with my own tweaks and additions for Micro.blog, and ported from the [Hugo-Tufte theme](https://github.com/slashformotion/hugo-tufte) by SlashForMotion.
+A typography-focused theme for [Micro.blog](https://micro.blog), inspired by Matthew Butterick's [Practical Typography](https://practicaltypography.com/) and built on top of [Tufte for Micro.blog](https://github.com/pimoore/microdotblog-tufte) by Pete Moore.
+
+It combines the Tufte tradition of sidenotes and margin notes with the clean, considered typographic style of Practical Typography: a three-column layout with post metadata on the left, body text in the centre, and sidenotes in the right margin.
 
 ## Features
 
-* Well spaced main content with use of sidebar elements for figures, margin notes, and sidenotes instead of footnotes, and plenty of whitespace
-* Dark mode version
-* Hugo shortcodes for various elements:
-	* blockquote
-	* cite
-	* div
-	* epigraph
-	* figure
-	* marginnote
-	* newthought
-	* section
-	* sidenote
-	* summary
-	* poetry
-* Fully styled Micro.blog conversation elements
-* **Poetry styling!**
-	* "poetry" shortcode creates a ```<pre><code>``` block with the poem text
-	* css styles the block with normal et-book text to look like a normal post but maintains indents and line returns
-	* css also removes the horizontal scroll of long lines, instead word-wrapping normally at whitespace depending on screen width
-* Added customizable site subtitle in config.json
-* Added mailto: address in config.json, and auto includes "Reply by email" link at the bottom of each post
-	* subject will automatically include the title if one is available, otherwise will include the permalink
-	
+- **Three-column layout** with left metadata (title and date), body text, and a right margin for sidenotes and figures
+- **Paragraph anchors** -- every paragraph and heading gets a subtle `#` permalink (hidden until hover on desktop, always visible on mobile), inspired by [Scripting.com](http://scripting.com/)
+- **Dark mode** with full coverage across all elements
+- **Responsive design** that collapses gracefully to a single column on mobile, with tappable sidenote/marginnote toggles
+- **Archive page** grouped by year and month, showing only titled posts
+- **Larger body text for untitled posts** -- short-form posts without a title are displayed in a slightly larger font
+- Link styling that distinguishes visited from unvisited links (underline vs. degree symbol)
+- Circled ordered list numbers inspired by Practical Typography
+- Full support for Micro.blog conversations, categories, and plugin architecture
+- Hugo shortcodes for rich typographic elements:
+  - `blockquote` / `epigraph`
+  - `cite`
+  - `div` / `section`
+  - `figure` (regular, full-width, and margin)
+  - `marginnote` / `sidenote`
+  - `newthought`
+  - `summary`
+  - `poetry`
+
 ## Shortcode Usage
 
-All of these shortcodes use the standard Hugo syntax of <code>{{< name >}}</code> to open and <code>{{< /name >}}</code> to close.  Some of them use inner parameters in addition to text between the open and closing blocks.
+All shortcodes use the standard Hugo syntax: `{{< name >}}` to open and `{{< /name >}}` to close. Some accept parameters in addition to inner content.
 
-**Note for Ulysses: shortcodes need to be opened and closed by adding a tilde (~) on each end, which tells the software to keep it as raw source.** - Credit to @moondeer on Micro.blog for this tip!
+**Ulysses users:** wrap shortcodes with tildes (`~`) on each end so the app treats them as raw source. Credit to @moondeer on Micro.blog for this tip.
 
-### Blockquote & Epigraph
+### Blockquote and Epigraph
 
-Blockquote is a shortcode version of the standard Markdown blockquote option, except it provides parameters to add attribution information to the quote:
-* pre: name
-* cite: attribution source
-* link: creates a link to the website using the cite value as the URL label
-	* **Note:** due to how Hugo handles external URLs, the link must be entered without the http(s): portion, instead only using //site-name/link/ (see example below)
-* post: optional to add trailing attribution info after the cite, such as page number references
+`blockquote` is a shortcode alternative to Markdown's `>` syntax, with support for attribution:
 
-**Epigraph uses the same parameters** but this is used to highlight special passages or quotes either within or at the beginning of an article, or even a quote style post.  They are formatted in slightly smaller and italic text as opposed to blockquotes which are only indented.  Think of the epigraph as the Tufte equivalent of pullquotes.
+| Parameter | Description |
+|-----------|-------------|
+| `pre` | Author name |
+| `cite` | Source title |
+| `link` | Source URL (omit the `http(s):` prefix -- use `//example.com/path/`) |
+| `post` | Trailing text after the citation (e.g. page numbers) |
 
-Code example:
+`epigraph` accepts the same parameters but renders in smaller italic text. Use it for highlighted passages or pull-quotes at the start of an article.
+
 ```
-{{< blockquote pre="Person's Name" cite="Site Name" link="//example.com/link/" >}}blockquote text goes here{{< /blockquote >}}
+{{< blockquote pre="Author Name" cite="Source" link="//example.com/" >}}
+Quote text here.
+{{< /blockquote >}}
 ```
 
 ### Cite
 
-This does the same thing as the parameter version, except can be run as it's own separate shortcode.  It will format the text in smaller italics.
+Formats text as a standalone citation in smaller italics.
 
-Code example: 
 ```
-{{< cite >}}cite name here{{< /cite >}}
+{{< cite >}}Citation text{{< /cite >}}
 ```
 
-### Div & Section
+### Div and Section
 
-These are shortcodes used to code <code>\<div\></code> and <code>\<section\></code> blocks, and can use the 'class' and 'id' parameters.  To close the block, use <code>{{< div "end" >}}</code>.
-	
-Code example:
+Shortcodes for `<div>` and `<section>` blocks with optional `class` and `id` parameters. Close with `{{< div "end" >}}`.
+
 ```
-{{< div class="class_name" id="id_name" >}}
-	/* block content */
+{{< div class="my-class" id="my-id" >}}
+Block content here.
 {{< div "end" >}}
 ```
 
 ### Figure
 
-Allows the insertion of figures into your article, and uses three different formats:
-* regular - same as the article text width
-* full - takes up the full body width including the side margin
-* margin - places the figure and image in the margin, and treats it as a marginnote
+Inserts figures in three formats:
 
-The full and margin options are specified using the 'type' parameter, otherwise it will use the regular width if the type parameter is not present.
+| Type | Description |
+|------|-------------|
+| *(default)* | Same width as body text |
+| `full` | Full width including the margin |
+| `margin` | Placed in the margin as a marginnote |
 
-Figure also uses the following paramaters:
-* title: the figure title in bold
-* caption: the figure caption text
-* alt: the image description
-* label: the **unique** figure label text (this is for the marginnote toggle to work properly)
-* src: the url of the figure image
-* attrlink: the attribution link URL
-* attr: the link label for the attribution
+Parameters: `src`, `alt`, `type`, `title`, `caption`, `label` (required for margin toggle), `attr`, `attrlink`.
 
-Code example:
 ```
-{{< figure src="https://example.com/link-to-image" alt="description" type="margin" title="Title text" caption="caption text goes here" label="unique label text" >}}
+{{< figure src="https://example.com/image.jpg" alt="Description" type="margin" title="Title" caption="Caption text" label="unique-label" >}}
 ```
 
-### Sidenote & Marginnote
+### Sidenote and Marginnote
 
-These both place notes in the side margin, except in the case of sidenote it will add a sequential number to each one just like footnotes normally do.  These both use an inner unique label to identify the note.
+Both place notes in the right margin. Sidenotes add sequential superscript numbers (like footnotes); marginnotes do not.
 
-Code example:
 ```
-{{< sidenote "label text" >}}sidenote text goes here{{< /sidenote >}}
+{{< sidenote "unique-label" >}}Sidenote text.{{< /sidenote >}}
+{{< marginnote "unique-label" >}}Marginnote text.{{< /marginnote >}}
 ```
 
 ### Newthought
 
-This is a span of small cap styled text that can be used to highlight the start of sections.
+Renders a span of small-caps text, typically used to mark the start of a new section.
 
-Code example:
 ```
-{{< newthought >}}Here is the start of a section{{< /newthought >}} that is using the newthought shortcode.
+{{< newthought >}}Opening words{{< /newthought >}} followed by regular text.
 ```
 
 ### Summary
 
-This shortcode is used to add a post synopsis or summary to longer, titled essay style articles.  It's used in conjunction with a 'more' divider that will display only the summary on the index page followed by a link to read the article in full.
+Adds a synopsis to longer articles. Used with Hugo's `<!--more-->` divider to show only the summary on the index page.
 
-Code example:
 ```
-# Post title
+# Post Title
 
-{{< summary >}}This is the post summary text that will be displayed by itself on the index page.{{< /summary >}}<!--more-->
-/* post content starts here */
+{{< summary >}}Summary text shown on the index page.{{< /summary >}}<!--more-->
+
+Full post content starts here.
 ```
 
 ### Poetry
 
-The poetry shortcode is an optional coding shortcut that can be used for poetry writing that maintains line returns and tab spaces for unique poem formatting.  It puts the text content into a code block, but then changes the styling to match the ET-book serif font that all articles use.  It will also perform word wrapping at whitespaces between words (dependant on the screen width of the device).
+Maintains line breaks and indentation for poetry formatting. The text is placed in a code block but styled to match the body font, with word wrapping at whitespace boundaries.
 
-Code example:
 ```
 {{< poetry >}}
 Now is the time
-	for all good men
-		to come to the aid of the party
+    for all good men
+        to come to the aid of the party
 {{< /poetry >}}
 ```
 
 ## URL Slug Control
 
-Micro.blog is unique in how it handles URL slugs, normally capturing the first three words of the title or article text.  However, when writing a title-less short-form post in Tufte that _starts with a shortcode_, such as epigraph/blockquote for a quote style post, or poetry, the shortcode text itself gets picked up as one of the URL slug words.  To get around this, you can use a hidden paragraph html tag with the slug title you want to use. **Note: M.b. will still use only the first three words**
-
-Code example:
-```
-<p hidden>slug title here</p>
-{{< epigraph pre="Charles E. Weller" >}}Now is the time for all good men to come to the aid of the party.{{< /epigraph >}}
-```
-
-## built-in plugin support
-* support in the layout and styling for the following plugins has been built-in to Hitchens, and will take affect automatically as long as the plugin is installed
-	- Reply by Email, by @sod -- shows a customizable link to allow people to reply to your post via email
-	- Conversation on Micro.blog, by @sod -- shows a customizable link to allow people to reply to your post via Micro.blog
-	- Surprise Me!, by @sod -- shows in the main menu
-	- Post Stats, by @amit -- shows in the main menu with a link to its own page
-	
-## On This Day support
-* based on the plugin by @cleverdevil, with custom code added to work and style properly with Hitchens
-* requires setting up a new custom "On This Day" page and setting it to display in your navigation, then inserting the following code into the page content:
+Micro.blog generates URL slugs from the first three words of a post's title or text. If a short-form post starts with a shortcode (e.g. `epigraph` or `poetry`), the shortcode name can end up in the slug. To control this, add a hidden paragraph before the shortcode:
 
 ```
+<p hidden>desired slug words</p>
+{{< epigraph pre="Author" >}}Quote text.{{< /epigraph >}}
+```
+
+Note: Micro.blog still uses only the first three words.
+
+## Built-in Plugin Support
+
+Practical Tufte includes layout and styling support for the following Micro.blog plugins. They work automatically when installed:
+
+- **Reply by Email** by @sod -- adds a reply-via-email link to each post
+- **Conversation on Micro.blog** by @sod -- adds a reply-via-Micro.blog link to each post
+- **Surprise Me!** by @sod -- adds a link in the navigation menu
+- **Post Stats** by @amit -- adds a link in the navigation menu to its stats page
+
+## On This Day Support
+
+Based on the plugin by @cleverdevil. To set it up, create a new page titled "On This Day", add it to your navigation, and paste the following code into its content:
+
+```html
 <div id="on-this-day">
   <div class="center">Loading...</div>
 </div>
@@ -168,7 +161,7 @@ function renderPost(post) {
     var postEl = document.createElement('article');
     postEl.className = 'post h-entry';
     container.appendChild(postEl);
-    
+
     if (post['properties']['name'] != null) {
         var dividedEl = document.createElement('div');
         dividedEl.className = 'divided';
@@ -186,7 +179,7 @@ function renderPost(post) {
 
     var postmetaEl = document.createElement('div');
     postmetaEl.className = 'post-meta';
-    contentEl.appendChild(postmetaEl);    
+    contentEl.appendChild(postmetaEl);
 
     var postdateEl = document.createElement('div');
     postdateEl.className = 'article-post-date';
@@ -208,13 +201,12 @@ function renderPost(post) {
     permalinkEl.appendChild(publishedEl);
 
     var ruleEl = document.createElement('hr');
-    container(ruleEl);
-
+    container.appendChild(ruleEl);
 }
 
 function renderNoContent() {
     var noPostsEl = document.createElement('div');
-	noPostsEl.className = 'center';
+    noPostsEl.className = 'center';
     noPostsEl.innerText = 'No posts found for this day. Check back tomorrow!';
     container.appendChild(noPostsEl);
 }
@@ -238,16 +230,22 @@ xhr.onreadystatechange = function(e) {
 }
 </script>
 ```
-* **be sure to change the timezone setting to the correct one for you**
-	
-## Installing the theme
-	
-Tufte is available as a full plugin on Micro.blog.  Before installing _Tufte_ be sure to remove any custom CSS, other theme plugins, and set your template to blank.  Then save the changes, after which you can install the plugin for this theme.  If things aren't working or displaying properly, you may have to remove **all plugins** first, save the changes and install _Tufte_, then add back the other plugins.  Once the theme is successfully installed, you can configure the subtitle and mailto parameters as explained below:
-	
-### Changing the "subtitle" and "description" parameters in config.json
-	
-_Tufte_ includes a configurable subtitle, as well as site description.  Once you've installed the theme plugin on your account per the above instructions, these parameters can be adjusted in the plugin settings.  These new parameter values should be kept anytime the plugin receives an update to its codebase.
-	
+
+**Important:** change the timezone parameter (`tz=America/Toronto`) to your own timezone.
+
+## Installing the Theme
+
+Practical Tufte is available as a plugin on Micro.blog.
+
+Before installing, remove any custom CSS and other theme plugins, and set your design template to **Blank**. Save, then install the Practical Tufte plugin. If anything doesn't display correctly, try removing all plugins first, installing Practical Tufte, then re-adding your other plugins.
+
+### Configuration
+
+Once installed, you can set the following in the plugin settings:
+
+- **Subtitle** -- displayed below your site title
+- **Description** -- used in meta tags for SEO
+
 ## Screenshots
 
 ### Index
@@ -260,36 +258,35 @@ _Tufte_ includes a configurable subtitle, as well as site description.  Once you
 ![Single post](images/single-post.jpeg)
 
 ### Micro.blog Conversation
+
 ![Micro.blog conversation](images/conversation.jpeg)
 
 ### Content Page
 
 ![Content page](images/content-page.jpeg)
 
-### Archives
+### Archive
 
 ![Archive](images/archive.jpeg)
 
 ### Mobile Sidenote/Marginnote Expansion
 
-On smaller mobile screens the sidenotes, marginnotes and margin figures will be replaced with a tappable button that toggles their display.  For sidenotes, tapping the number will toggle it, while marginnotes and figures will be identified by a ⊕ symbol.
+On smaller screens, sidenotes and marginnotes collapse into tappable toggles. Sidenotes use their superscript number; marginnotes and margin figures show a circled plus symbol.
 
-![Mobile Expansion Buttons](images/mobile_expansion.gif)
+![Mobile Expansion](images/mobile_expansion.gif)
 
 ## Credits
 
-* Dave Liepmann - [Tufte-CSS project](https://github.com/edwardtufte/tufte-css/)<br />
-* SlashForMotion - [Hugo-Tufte theme](https://github.com/slashformotion/hugo-tufte)<br />
-* Leon Paternoster (@leonp on Micro.blog) for his numerous excellent posts on font spacing, typography and legibility
-* Jason Cardwell (@moondeer on Micro.blog) for his Ulysses tip for shortcode handling
-* Manton Reece (@manton on Micro.blog) for creating the Micro.blog platform
+Practical Tufte builds on the work of:
 
-## Ported to Micro.blog by
-
-Pete Moore
-
-* https://github.com/pimoore
+- **Pete Moore** ([@pimoore](https://github.com/pimoore)) -- [Tufte for Micro.blog](https://github.com/pimoore/microdotblog-tufte), the theme this project is based on
+- **Dave Liepmann** -- [Tufte-CSS](https://github.com/edwardtufte/tufte-css/), the original CSS framework for Tufte-style web typography
+- **SlashForMotion** -- [Hugo-Tufte](https://github.com/slashformotion/hugo-tufte), the Hugo port that Tufte for Micro.blog was built from
+- **Matthew Butterick** -- [Practical Typography](https://practicaltypography.com/), whose design principles and typographic style inspired the layout and visual direction of this theme
+- **Leon Paternoster** (@leonp on Micro.blog) -- posts on font spacing, typography, and legibility
+- **Jason Cardwell** (@moondeer on Micro.blog) -- Ulysses shortcode tip
+- **Manton Reece** (@manton on Micro.blog) -- creator of the Micro.blog platform
 
 ## License
 
-Licensed under the MIT License. See the [LICENSE](https://github.com/pimoore/theme-tufte/blob/main/LICENSE.md) file for more details.
+Licensed under the MIT License. See [LICENSE.md](LICENSE.md) for details.

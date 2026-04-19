@@ -21,8 +21,9 @@ diet
 node_modules
 .env
 
-# Ignore .vscode folder
+# Ignore editor/tool folders
 .vscode/
+.claude/
 
 # Ignore Obsidian files in /content/post
 /content/post/.obsidian/
