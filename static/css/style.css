@@ -14,7 +14,7 @@
 	     url('fonts/EquityTextA.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -23,7 +23,7 @@
 	     url('fonts/EquityTextA-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -32,7 +32,7 @@
 	     url('fonts/EquityTextA-Italic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -41,7 +41,7 @@
 	     url('fonts/EquityTextA-BoldItalic.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -50,7 +50,7 @@
 	     url('fonts/EquityCapsA.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -59,7 +59,7 @@
 	     url('fonts/EquityCapsA-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 /* Keep ET Book for poetry shortcode and legacy content */
@@ -68,7 +68,7 @@
 	src: url("fonts/et-book-roman-line-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -76,7 +76,7 @@
 	src: url("fonts/et-book-display-italic-old-style-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: italic;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -84,7 +84,7 @@
 	src: url("fonts/et-book-bold-line-figures.woff2") format("woff2");
 	font-weight: bold;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 @font-face {
@@ -92,7 +92,7 @@
 	src: url("fonts/et-book-roman-old-style-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 /* ----- Reset & Base ----- */
@@ -177,7 +177,7 @@ a:visited {
 .e-content a:link {
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-color: #933;
+	text-decoration-color: currentColor;
 	text-underline-offset: 0.15em;
 	text-decoration-thickness: 1px;
 }
@@ -820,27 +820,80 @@ span.p-summary {
 
 /* ----- Archive Pages ----- */
 
-.archive-section-title {
-	font-family: EquityCaps, Equity, Georgia, Palatino, serif;
-	font-size: 1.1rem;
-	font-weight: 400;
-	margin-bottom: 1.5rem;
-	color: #222;
-	letter-spacing: 0.02em;
+.archive-page {
+	max-width: 40em;
 }
 
 .archive_categories {
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: 2em;
-	gap: 0.8rem;
+	margin-bottom: 2.5em;
+	gap: 0.6rem 1.2rem;
 }
 
 .archive_categories a {
-	font-size: 0.95rem;
+	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-size: 0.88rem;
+	color: #555;
+	letter-spacing: 0.02em;
+}
+
+.archive_categories a:hover {
+	color: #933;
 }
 
 .archive_categories a::after {
+	content: none;
+}
+
+.archive-year {
+	margin-bottom: 2.5em;
+}
+
+.archive-year-header {
+	font-family: Equity, Palatino, Georgia, serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+	margin: 0 0 0.8em 0;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #ddd;
+}
+
+.archive-month {
+	margin-bottom: 1.5em;
+}
+
+.archive-month-header {
+	font-family: EquityCaps, Equity, Palatino, Georgia, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.95rem;
+	color: #667;
+	letter-spacing: 0.02em;
+	margin: 0 0 0.4em 0;
+}
+
+.archive-month-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 0;
+}
+
+.archive-month-list li {
+	margin-bottom: 0.35em;
+	font-size: 1rem;
+	line-height: 1.45;
+}
+
+.archive-month-list a {
+	color: #222;
+}
+
+.archive-month-list a:hover {
+	color: #933;
+}
+
+.archive-month-list a::after {
 	content: none;
 }
 
@@ -1092,10 +1145,6 @@ section {
 		border-top-color: #333;
 	}
 
-	.e-content a:link {
-		text-decoration-color: #e8a0a0;
-	}
-
 	.e-content a:visited::after {
 		color: #e8a0a0;
 	}
@@ -1113,6 +1162,31 @@ section {
 	}
 
 	nav#page-nav a:hover {
+		color: #e8a0a0;
+	}
+
+	/* Archive page in dark mode */
+	.archive-year-header {
+		border-bottom-color: #333;
+	}
+
+	.archive-month-header {
+		color: #888;
+	}
+
+	.archive_categories a {
+		color: #888;
+	}
+
+	.archive_categories a:hover {
+		color: #e8a0a0;
+	}
+
+	.archive-month-list a {
+		color: #d4d4d8;
+	}
+
+	.archive-month-list a:hover {
 		color: #e8a0a0;
 	}
 
