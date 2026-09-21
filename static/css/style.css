@@ -10,8 +10,8 @@
 
 @font-face {
 	font-family: 'Equity';
-	src: url('https://blot.blog/fonts/EquityTextA.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityTextA.ttf') format('truetype');
+	src: url('fonts/EquityTextA.otf') format('opentype'),
+	     url('fonts/EquityTextA.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -19,8 +19,8 @@
 
 @font-face {
 	font-family: 'Equity';
-	src: url('https://blot.blog/fonts/EquityTextA-Bold.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityTextA-Bold.ttf') format('truetype');
+	src: url('fonts/EquityTextA-Bold.otf') format('opentype'),
+	     url('fonts/EquityTextA-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 	font-display: block;
@@ -28,8 +28,8 @@
 
 @font-face {
 	font-family: 'Equity';
-	src: url('https://blot.blog/fonts/EquityTextA-Italic.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityTextA-Italic.ttf') format('truetype');
+	src: url('fonts/EquityTextA-Italic.otf') format('opentype'),
+	     url('fonts/EquityTextA-Italic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
 	font-display: block;
@@ -37,8 +37,8 @@
 
 @font-face {
 	font-family: 'Equity';
-	src: url('https://blot.blog/fonts/EquityTextA-BoldItalic.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityTextA-BoldItalic.ttf') format('truetype');
+	src: url('fonts/EquityTextA-BoldItalic.otf') format('opentype'),
+	     url('fonts/EquityTextA-BoldItalic.ttf') format('truetype');
 	font-weight: bold;
 	font-style: italic;
 	font-display: block;
@@ -46,8 +46,8 @@
 
 @font-face {
 	font-family: 'EquityCaps';
-	src: url('https://blot.blog/fonts/EquityCapsA.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityCapsA.ttf') format('truetype');
+	src: url('fonts/EquityCapsA.otf') format('opentype'),
+	     url('fonts/EquityCapsA.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -55,8 +55,8 @@
 
 @font-face {
 	font-family: 'EquityCaps';
-	src: url('https://blot.blog/fonts/EquityCapsA-Bold.otf') format('opentype'),
-	     url('https://blot.blog/fonts/EquityCapsA-Bold.ttf') format('truetype');
+	src: url('fonts/EquityCapsA-Bold.otf') format('opentype'),
+	     url('fonts/EquityCapsA-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 	font-display: block;
@@ -65,7 +65,7 @@
 /* Keep ET Book for poetry shortcode and legacy content */
 @font-face {
 	font-family: "et-book";
-	src: url("https://blot.blog/fonts/et-book-roman-line-figures.woff2") format("woff2");
+	src: url("fonts/et-book-roman-line-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -73,7 +73,7 @@
 
 @font-face {
 	font-family: "et-book";
-	src: url("https://blot.blog/fonts/et-book-display-italic-old-style-figures.woff2") format("woff2");
+	src: url("fonts/et-book-display-italic-old-style-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: italic;
 	font-display: block;
@@ -81,7 +81,7 @@
 
 @font-face {
 	font-family: "et-book";
-	src: url("https://blot.blog/fonts/et-book-bold-line-figures.woff2") format("woff2");
+	src: url("fonts/et-book-bold-line-figures.woff2") format("woff2");
 	font-weight: bold;
 	font-style: normal;
 	font-display: block;
@@ -89,7 +89,7 @@
 
 @font-face {
 	font-family: "et-book-roman-old-style";
-	src: url("https://blot.blog/fonts/et-book-roman-old-style-figures.woff2") format("woff2");
+	src: url("fonts/et-book-roman-old-style-figures.woff2") format("woff2");
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
