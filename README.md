@@ -4,6 +4,10 @@ A typography-focused theme for [Micro.blog](https://micro.blog), inspired by Mat
 
 It combines the Tufte tradition of sidenotes and margin notes with the clean, considered typographic style of Practical Typography: a three-column layout with post metadata on the left, body text in the centre, and sidenotes in the right margin.
 
+## Before using this theme
+
+- Remove line 7 from `/layouts/partials/footer.html`
+
 ## Features
 
 - **Three-column layout** with left metadata (title and date), body text, and a right margin for sidenotes and figures
